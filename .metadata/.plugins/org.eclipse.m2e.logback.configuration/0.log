@@ -11674,3 +11674,4 @@
 2022-06-23 13:25:24,038 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-06-23 13:25:24,038 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2022-06-23 13:25:24,038 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\prana\Documents\1812333\EquisymWS\Workspace\Equisym\Equisym2\Equisym\src\test\resources
+2022-06-23 15:09:13,282 [main] WARN  org.eclipse.jgit.util.FS_Win32 - null
