@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+
+      <link rel="stylesheet" href="css/registration_style.css">
+
+</head>
+<body  link="green" vlink="yellow" alink="white" >
+	<!-- HTML Registration form -->
+	<div class="wrap">
+	<div class="container">
+		<div class= "row">
+			<div class="col-md-6 col-md-offset-3">
+			<!-- success message -->
+			
+			<div th:if="${param.Success}">
+				<div class= "alert alert-info " align="center">
+				<div style="color:green">
+				You've Successfully Registered !!
+				
+				</div>
+				</div>
+				<div class= "alert alert-info " align="center">
+				<div style="color:green">
+				Please check your email to verify your Account
+				
+				</div>
+				</div>
+		</div>
+		<div th:if="${param.Fail}">
+				<div class= "alert alert-danger" align="center">
+				<div style="color:red">
+				Email Or Phone Number Already Exists!!
+				</div>
+				</div>
+				
+			</div>
+			<div align="center">
+			<h1> Registration</h1>
+			</div>
+			<form th:action="@{/registration}" method="post" th:object="${user}"  onSubmit = "return checkPassword(this)">
+				<div class="form-group">
+					
+					<input id="firstName" class="form-control" placeholder="First Name" type="text" th:field="*{firstName}" required autofocus="autofocus" maxlength="45"/>
+					
+					<input id="lastName" class="form-control"placeholder="Last Name" type="text" th:field="*{lastName}" required autofocus="autofocus" maxlength="45"/>
+				
+				</div>
+				
+					
+					<div class="form-group" >
+					<select style="color:#777"  id="country" class="select" th:field="*{country}" required autofocus="autofocus">
+					 <option value="">- Country -</option>
+
+								<option value="AF">Afghanistan</option>
+
+								<option value="AX">Aland Islands</option>
+
+								<option value="AL">Albania</option>
+
+								<option value="DZ">Algeria</option>
+
+								<option value="AS">American Samoa</option>
+
+								<option value="AD">Andorra</option>
+
+								<option value="AO">Angola</option>
+
+								<option value="AI">Anguilla</option>
+
+								<option value="AQ">Antarctica</option>
+
+								<option value="AG">Antigua and Barbuda</option>
+
+								<option value="AR">Argentina</option>
+
+								<option value="AM">Armenia</option>
+
+								<option value="AW">Aruba</option>
+
+								<option value="AU">Australia</option>
+
+								<option value="AT">Austria</option>
+
+								<option value="AZ">Azerbaijan</option>
+
+								<option value="BS">Bahamas</option>
+
+								<option value="BH">Bahrain</option>
+
+								<option value="BD">Bangladesh</option>
+
+								<option value="BB">Barbados</option>
+
+								<option value="BY">Belarus</option>
+
+								<option value="BE">Belgium</option>
+
+								<option value="BZ">Belize</option>
+
+								<option value="BJ">Benin</option>
+
+								<option value="BM">Bermuda</option>
+
+								<option value="BT">Bhutan</option>
+
+								<option value="BO">Bolivia</option>
+
+								<option value="BW">Botswana</option>
+
+								<option value="BV">Bouvet Island</option>
+
+								<option value="BR">Brazil</option>
+
+								<option value="BN">Brunei Darussalam</option>
+
+								<option value="BG">Bulgaria</option>
+
+								<option value="BF">Burkina Faso</option>
+
+								<option value="BI">Burundi</option>
+
+								<option value="KH">Cambodia</option>
+
+								<option value="CM">Cameroon</option>
+
+								<option value="CA">Canada</option>
+
+								<option value="CV">Cape Verde</option>
+
+								<option value="KY">Cayman Islands</option>
+
+								<option value="CF">Central African Republic</option>
+
+								<option value="TD">Chad</option>
+
+								<option value="CL">Chile</option>
+
+								<option value="CN">China</option>
+
+								<option value="CX">Christmas Island</option>
+
+								<option value="CO">Colombia</option>
+
+								<option value="KM">Comoros</option>
+
+								<option value="CG">Congo</option>
+
+								<option value="CD">Congo</option>
+
+								<option value="CK">Cook Islands</option>
+
+								<option value="CR">Costa Rica</option>
+
+								<option value="CI">Cote D'Ivoire</option>
+
+								<option value="HR">Croatia</option>
+
+								<option value="CU">Cuba</option>
+
+								<option value="CW">Curacao</option>
+
+								<option value="CY">Cyprus</option>
+
+								<option value="CZ">Czech Republic</option>
+
+								<option value="DK">Denmark</option>
+
+								<option value="DJ">Djibouti</option>
+
+								<option value="DM">Dominica</option>
+
+								<option value="DO">Dominican Republic</option>
+
+								<option value="EC">Ecuador</option>
+
+								<option value="EG">Egypt</option>
+
+								<option value="SV">El Salvador</option>
+
+								<option value="GQ">Equatorial Guinea</option>
+
+								<option value="ER">Eritrea</option>
+
+								<option value="EE">Estonia</option>
+
+								<option value="ET">Ethiopia</option>
+
+								<option value="FK">Falkland Islands (Malvinas)</option>
+
+								<option value="FO">Faroe Islands</option>
+
+								<option value="FJ">Fiji</option>
+
+								<option value="FI">Finland</option>
+
+								<option value="FR">France</option>
+
+								<option value="GF">French Guiana</option>
+
+								<option value="PF">French Polynesia</option>
+
+								<option value="GA">Gabon</option>
+
+								<option value="GM">Gambia</option>
+
+								<option value="GE">Georgia</option>
+
+								<option value="DE">Germany</option>
+
+								<option value="GH">Ghana</option>
+
+								<option value="GI">Gibraltar</option>
+
+								<option value="GR">Greece</option>
+
+								<option value="GL">Greenland</option>
+
+								<option value="GD">Grenada</option>
+
+								<option value="GP">Guadeloupe</option>
+
+								<option value="GU">Guam</option>
+
+								<option value="GT">Guatemala</option>
+
+								<option value="GG">Guernsey</option>
+
+								<option value="GN">Guinea</option>
+
+								<option value="GW">Guinea-Bissau</option>
+
+								<option value="GY">Guyana</option>
+
+								<option value="HT">Haiti</option>
+
+								<option value="VA">Holy See (Vatican City State)</option>
+
+								<option value="HN">Honduras</option>
+
+								<option value="HK">Hong Kong</option>
+
+								<option value="HU">Hungary</option>
+
+								<option value="IS">Iceland</option>
+
+								<option value="IN">India</option>
+
+								<option value="ID">Indonesia</option>
+
+								<option value="IR">Iran</option>
+
+								<option value="IQ">Iraq</option>
+
+								<option value="IE">Ireland</option>
+
+								<option value="IM">Isle of Man</option>
+
+						
+			          </select>
+			         <input id="state" class="form-control" placeholder="State" type="text" th:field="*{state}" required autofocus="autofocus"/>
+			          
+			          </div>
+				<div class="form-group">	
+					
+					
+					<input id="ssn" class="form-control" placeholder="SSN" type="text" th:field="*{ssn}"   pattern="[0-9]{10}" maxlength="10" required autofocus="autofocus"/>
+				 	<input id="pinCode" class="form-control" maxlength="5" placeholder="Zip Code" type="text" th:field="*{pinCode}" required autofocus="autofocus"/>
+				 
+				</div>
+				<div class="form-group">	
+					<select style="color:#777" name="roles" id="roleName" class="select" th:field="*{roleName}"  required autofocus="autofocus">
+					<option value="">Role</option>
+					<option value="Trainer">Trainer</option>
+					
+					<option value="Trainee">Trainee</option>
+					
+					
+					</select>
+				<input id="contact" name="contact" 
+				 pattern="[0-9]{10}" maxlength="10" placeholder="Phone Number" type="text"  th:field="*{contact}" th:value="*{contact}"  required="required"/>
+				
+				</div>
+				
+				
+				<div class="form-group">	
+					<input id="email" class="form-control" placeholder="Email" type="email" 
+					 th:field="*{email}"   th:value="*{email}"   required autofocus="autofocus"/>
+					
+				</div>
+				<div class="form-group">
+			   <input id="password" class = "form-control" type="password" placeholder=" password"   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  th:field="*{password}" name="password" required autofocus="autofocus"/>
+					
+					<input type="password" class = "form-control"  placeholder="Confirm password"  name="password2" required autofocus="autofocus"/>
+				
+				</div>
+				
+								<input type="checkbox" onclick="myFunction()">Show Password
+				
+				
+				<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>	
+				
+					  
+				<div class="form-group">
+				<input type="submit" class="btn btn-success"><br>
+				
+				</div>
+				<br>
+				<div align="center">
+				<span> Already Registered? <a href="/" th:href="@{/login}">Login Here</a></span>
+				</div>
+				
+			</form>
+</div>
+
+		
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+
+	<script>
+	function checkPassword(form) {
+        password1 = form.password.value;
+        password2 = form.password2.value;
+
+        // If password not entered
+        if (password1 == '')
+            alert ("Please enter Password");
+              
+        // If confirm password not entered
+        else if (password2 == '')
+            alert ("Please enter confirm password");
+              
+        // If Not same return False.    
+        else if (password1 != password2) {
+            alert ("\nPassword did not match: Please try again...")
+            return false;
+        }
+
+       
+    }
+	</script>
+	<script>
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+}
+
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+
+<script >
+
+function myFunction() {
+	  var x = document.getElementById("password");
+	  if (x.type === "password") {
+	    x.type = "text";
+	  } else {
+	    x.type = "password";
+	  }
+	}
+
+
+</script>
+
+
+
+</body>
+</html>
+

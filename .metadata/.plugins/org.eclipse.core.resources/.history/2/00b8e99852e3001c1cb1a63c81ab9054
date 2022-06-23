@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+
+<title>Slot Creation</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
+</head>
+<body>
+	<!-- HTML Slot Creation form -->
+	<div class="container">
+		<div class= "row">
+			<div class="col-md-6 col-md-offset-3">
+			<!-- success message -->
+			
+			<style>
+			.map{
+			height:400px;
+			width:100%;
+			}
+			</style>
+			<h1> Slot Create/Update</h1>
+			<form th:action="@{/slot}" method="post" th:object="${slot}" >
+			<input type="hidden"  id = "slid" name="slid" th:value="${slid}" />
+				<!--div class="form-group">
+					<label class = "control-label" for="day">
+						Day
+					</label>
+					<select style="color:#777" id="day" class="form-control" th:field="*{day}" required autofocus="autofocus">
+					<option value="">Choose</option>
+					<option value="Monday">Monday</option>
+					<option value="Tuesday">Tuesday</option>
+					<option value="Wednesday">Wednesday</option>
+					<option value="Thursday">Thursday</option>
+					<option value="Friday">Friday</option>
+					<option value="Saturday">Saturday</option>
+					<option value="Sunday">Sunday</option>
+					</select>
+				</div-->
+				<div class="form-group">
+					<label class = "control-label" for="date">
+						Date
+					</label>
+					<input type = "date" id="date" class="form-control" name = "date" th:value = "${date}" th:field = "*{date}"required autofocus="autofocus"/>
+				</div>
+				<div class="form-group">	
+					<label class = "control-label" for="timeIn">
+						Time In
+					</label>
+					<input type = "time" id="timeIn" class="form-control" name = "timeIn" th:value = "${timeIn}" th:field = "*{timeIn}" required autofocus="autofocus"/>
+				</div>
+				<div class="form-group">	
+					<label class = "control-label" for="timeOut">
+						Time Out
+					</label>
+					<input type = "time" id="timeOut" class="form-control" name = "timeOut" th:value = "${timeOut}"  th:field = "*{timeOut}"required autofocus="autofocus"/>
+				</div>
+				<div class="form-group">	
+					<label class = "control-label" for="landmark">
+						Landmark
+					</label>
+					<input type = "text" id="landmark" class="form-control"  name = "landmark" th:value = "${landmark}" th:field = "*{landmark}" placeholder="Location" required autofocus="autofocus"/>
+				</div>
+				<div class="form-group">	
+					<label class = "control-label" for="zipCode">
+						Zip Code
+					</label>
+					<input id="zipCode" class="form-control" maxlength="5" placeholder="zipCode" type="text" th:value = "${zipCode}" th:field="*{zipCode}" required autofocus="autofocus"/>
+				</div>
+				
+				<div class="form-group">	
+					<label class = "control-label" for="latitude">
+						Latitude
+					</label>
+					<input type = "number" id="latitude" class="form-control" name = "latitude" th:value = "${latitude}" th:field = "*{latitude}" placeholder="Latitude" required readonly autofocus="autofocus"/>
+				</div>
+				<div class="form-group">	
+					<label class = "control-label" for="longitude">
+						Longitude
+					</label>
+					<input type = "number" id="longitude" class="form-control" name = "longitude" th:value = "${longitude}" th:field = "*{longitude}"  placeholder="Longitude" required readonly autofocus="autofocus"/>
+				</div>
+				
+
+				<div class="form-group">
+					<label class = "control-label" for="course">
+						Course
+					</label>	
+					<select style="color:#777" id="course" class="select" name = "course" th:value = "${course}"  th:field = "*{course}" required autofocus="autofocus">
+					<option value="">SELECT COURSE</option>
+					<option value="Karate">Karate</option>
+					<option value="Boxing">Boxing</option>
+					<option value="Judo">Judo</option>
+					</select>
+				</div>
+				
+
+				<div id="map" class="map"></div>
+				
+
+				
+
+				<script type = "text/javascript">
+				
+
+				 var map = new ol.Map({
+			        target: 'map',
+			        layers: [
+			          new ol.layer.Tile({
+			            source: new ol.source.OSM()
+			          })],
+			        view: new ol.View({
+			          center: ol.proj.fromLonLat([78.136602, 8.742531]),
+			          zoom: 4
+			        })
+			      });
+			      
+
+			      map.on('click', function(evt){
+				    console.info(evt.pixel);
+				    console.info(map.getPixelFromCoordinate(evt.coordinate));
+				    console.info(ol.proj.toLonLat(evt.coordinate));
+				    var coords = ol.proj.toLonLat(evt.coordinate);
+				    var lat = coords[1];
+				    var lon = coords[0];
+				    var locTxt = "Latitude: " + lat + " Longitude: " + lon;
+				    // coords is a div in HTML below the map to display
+				    document.getElementById("latitude").value = lat;
+				    document.getElementById("longitude").value = lon;
+				   
+
+				});
+
+			      
+
+				</script>
+				
+
+				
+
+				<div class="form-group">
+				<button type="submit" class="btn btn-success">Create/Update Slot</button><br>
+				</div>
+				
+
+			</form>
+			
+
+			
+
+			</div>
+		</div>
+	</div>
+	
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org"
+xmlns:sec="http://www.thymeLeaf.org/thymeLeaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body link="black" vlink="red" alink="blue">
+	<div class= "container" align="center">
+		<h1> Main Page</h1>
+		Welcome <span sec:authentication="principal.username">Users</span>
+	</div>
+	<div align="center">
+		<ul>
+			<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+			
+		</ul>
+	</div>
+	
+</body>
+</html>

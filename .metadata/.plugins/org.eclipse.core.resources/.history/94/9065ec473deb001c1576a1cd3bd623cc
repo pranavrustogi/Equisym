@@ -1,0 +1,40 @@
+package com.equisym.service.student;
+
+import java.util.List;
+import java.util.Map;
+import com.equisym.model.Repository.SlotRepository;
+
+
+
+
+public class AjaxDao 
+{
+	private SlotRepository slotRepository;
+	public AjaxDao(SlotRepository slotRepository)
+	{
+		super();
+		this.slotRepository = slotRepository;
+	}
+	public Map<Integer,String> getCourseMap()
+	{
+		int index = 1;
+		Map<Integer,String> courseMap = null;
+		List<String> courses = slotRepository.getCourses();
+		for(int i=0;i<courses.size();i++)
+		{
+			courseMap.put(index,courses.get(i));
+			index++;
+		}
+		return courseMap;
+		
+	}
+	public Map<String,List<String>> getSlotDateMap()
+	{
+		List<String> courses = slotRepository.getCourses();
+		Map<String,List<String>> slotDates = null;
+		for(int i=0;i<courses.size();i++)
+		{
+			slotDates.put(courses.get(i), slotRepository.getSlotDate(courses.get(i)));
+		}
+	}
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book Your Slot</title>
+</head>
+<body>
+	<div align = "center">
+		<br>
+		<table border = "1">
+		<tr>
+			<td>Address Line 1</td>
+			<td>Address Line 2</td>
+			<td>Landmark</td>
+			<td>ZIP Code</td>
+			
+		</tr>
+		<tr th:each="avail: ${availableSlots}">
+			<td th:text="${avail.address1}"></td>
+			<td th:text="${avail.address2}"></td>
+			<td th:text="${avail.landmark}"></td>
+			<td th:text="${avail.zipCode}"></td>
+			<td><a href="/" th:href="@{/availableSlots/{id}(id=${avail.id})}"></a></td>
+		</tr>
+		</table>
+	</div>
+
+</body>
+</html>

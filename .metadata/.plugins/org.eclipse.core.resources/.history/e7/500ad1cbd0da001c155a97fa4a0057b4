@@ -1,0 +1,185 @@
+package com.equisym.model;
+
+
+//import java.sql.Date;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//import java.time.String;
+
+//import java.time.String;
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Table(name= "slots")
+@Entity(name="slots")
+public class Slots 
+{
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private Long id;
+	@Column(name="FIRST_NAME")
+	private String firstName;
+	
+	@Column(name="LAST_NAME")
+	private String lastName;
+	
+	@Column(name="EMAIL")
+	private String email;
+	@Column(name="ADDRESS")
+	private String mapAddress;
+	@Column(name="CONTACT")
+	private String contact;
+	@Column(name="ROLE")
+	private String roleName;
+	@Column(name="COURSE")
+	public String course;
+	
+	@Column(name="DAY")
+	public String day;
+	@Column(name="START_TIME")
+	public String timeIn;
+	
+	private double latitude;
+	private double longitude;
+	
+	@Column(name="END_TIME")
+	public String timeOut;
+	
+	public Slots()
+	{}
+
+	public Slots(String firstName, String lastName, String email, String mapAddress, String contact,String roleName ,String course,
+			String day, String timeIn, String timeOut, double latitude, double longitude) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mapAddress = mapAddress;
+		this.contact = contact;
+		this.roleName=roleName;
+		this.course = course;
+		this.day = day;
+		this.timeIn = timeIn;
+		this.timeOut = timeOut;
+		this.latitude=latitude;
+		this.longitude=longitude;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
+
+	public String getMapAddress() {
+		return mapAddress;
+	}
+
+	public void setMapAddress(String mapAddress) {
+		this.mapAddress = mapAddress;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+	public String getCourse() {
+		return course;
+	}
+
+	public void setCourse(String course) {
+		this.course = course;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getTimeIn() {
+		return timeIn;
+	}
+
+	public void setTimeIn(String timeIn) {
+		this.timeIn = timeIn;
+	}
+	
+	public String getTimeOut() {
+		return timeOut;
+	}
+	
+	public void setTimeOut(String timeOut) {
+		this.timeOut = timeOut;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	
+	
+	
+	
+	
+}

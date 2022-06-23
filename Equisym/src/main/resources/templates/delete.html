@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org"
+xmlns:sec="http://www.thymeLeaf.org/thymeLeaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Delete Slot</title>
+</head>
+<body>
+	<h3>Training Slots</h3>
+	<hr>
+	<table border="1" cellspacing="10">
+		<thead>
+			<tr>
+				
+				<th>Course</th>
+				<th>Training Day</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="slotDetails:${slots}">
+			<!-- td th:text="${slotDetails.id}"-->
+			<td th:text="${slotDetails.course}">
+			<td th:text="${slotDetails.day}">
+			<td th:text="${slotDetails.timeIn}">
+			<td th:text="${slotDetails.timeOut}">
+			<td th:text="${slotDetails.mapAddress}">
+			<td><a href="/" th:href="@{/deleteSlot/{id}(id=${slotDetails.id})}" onclick="return message();">Delete</a></td>
+		</tbody>
+	</table>
+<script type="text/javascript">
+function message()
+{
+	var result = window.confirm("Do you wish to delete this slot ?");
+	if(result)
+		return true;
+	else
+		return false;
+}
+
+</script>
+
+
+</body>
+</html>

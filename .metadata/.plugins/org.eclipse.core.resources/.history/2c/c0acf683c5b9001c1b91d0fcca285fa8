@@ -1,0 +1,19 @@
+package com.equisym.model.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.equisym.model.Users;
+@Repository
+public interface UserRepository extends JpaRepository<Users,Long>
+{
+ Users findByEmail(String email);
+ @Query("UPDATE users u SET u.enabled=tru WHERE u.id = ?1")
+ @Modifying
+ public void enable(Long id);
+ 
+ @Query("SELECT u from users u WHERE u.verification_code = ?1")
+public Users findByVerificationCode(String verificationCode);
+}
