@@ -6,12 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>  </title>
     <link rel="stylesheet" type="text/css" href="css/forgot_style.css" />
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
 
 </head>	
 <body link="black" vlink="red" alink="blue">
-<div align="right">
-				<span> Already Registered? <a href="/" th:href="@{/login}">Login Here</a></span>
-				</div>
+<body class="landing">
+
+		<!-- Header -->
+			<header id="header" class="alt">
+			<h5><a href="index">EQUISYM</a></h5>
+			
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a th:href="index">Home</a></li>
+					<li><a th:href="@{/}">About Us</a></li>
+					<li><a th:href="@{/}">Our Gallery</a></li>
+					<li><a href="partnersInfo">Santa's Knights</a></li>
+					<li><a href="conductUs">Contact Us</a></li>
+					<li><a href="https://www.santasknights.org/membership">Donate</a></li>
+					<li><a href="login">Login & Registration</a></li>
+					<!-- <li><a href="elements.html">EEEE Us</a></li> -->
+				</ul>
+			</nav>	 
+
 
 <div class="form-container">
     <form th:action="@{/forgot}" method="post" class="form-wrap">
@@ -123,5 +145,14 @@ myInput.onkeyup = function() {
   }
 }
 </script>
+
+
+<!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/js/main.js"></script> 
+
 </body>
 </html>	

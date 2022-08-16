@@ -32,6 +32,8 @@ public class StudentsDto
 	
 	
 	private static String landmark;
+	private static String city;
+	private static String state;
 	
 	private static String zipCode;
 	
@@ -70,6 +72,8 @@ public class StudentsDto
 		address2 = slot.getAddress2();
 		landmark = slot.getLandmark();
 		zipCode = slot.getZipCode();
+		city = slot.getCity();
+		state= slot.getState();
 	}
 
 	public StudentsDto(LocalDate date, DayOfWeek day, String timeIn, String timeOut, String landmark, String zipCode, String course, double latitude, double longitude) {
@@ -222,6 +226,22 @@ public class StudentsDto
 
 	public static void setZipCode(String zipCode) {
 		StudentsDto.zipCode = zipCode;
+	}
+
+	public static String getCity() {
+		return city;
+	}
+
+	public static void setCity(String city) {
+		StudentsDto.city = city;
+	}
+
+	public static String getState() {
+		return state;
+	}
+
+	public static void setState(String state) {
+		StudentsDto.state = state;
 	}
 
 	

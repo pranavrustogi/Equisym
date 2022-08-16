@@ -2,14 +2,26 @@
 <html xmlns:th="http://www.thymeLeaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		 <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Registration</title>
 
       <link rel="stylesheet" href="css/registration_style.css">
-
+ <!--        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" /> -->
+<style>
+ form i {
+    margin-left: -50px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+ 
+ </style>
 </head>
 <body  link="green" vlink="yellow" alink="white" >
 	<!-- HTML Registration form -->
-	<div class="wrap">
+  <div class="wrap">
 	<div class="container">
 		<div class= "row">
 			<div class="col-md-6 col-md-offset-3">
@@ -40,7 +52,7 @@
 			<div align="center">
 			<h1> Registration</h1>
 			</div>
-			<form th:action="@{/registration}" method="post" th:object="${user}"  onSubmit = "return checkPassword(this)">
+			<form th:action="@{/registration}" method="post" th:object="${user}"  onSubmit = " checkPassword(this)">
 				<div class="form-group">
 					
 					<input id="firstName" class="form-control" placeholder="First Name" type="text" th:field="*{firstName}" required autofocus="autofocus" maxlength="45"/>
@@ -266,16 +278,18 @@
 				<div class="form-group">	
 					
 					
-					<input id="ssn" class="form-control" placeholder="SSN" type="text" th:field="*{ssn}"   pattern="[0-9]{10}" maxlength="10" required autofocus="autofocus"/>
+					<input id="ssn" class="form-control" placeholder="SSN" type="text" th:field="*{ssn}"   pattern="[0-9]{10}" th:value="*{ssn}" maxlength="10" required autofocus="autofocus"/>
 				 	<input id="pinCode" class="form-control" maxlength="5" placeholder="Zip Code" type="text" th:field="*{pinCode}" required autofocus="autofocus"/>
 				 
 				</div>
 				<div class="form-group">	
-					<select style="color:#777" name="roles" id="roleName" class="select" th:field="*{roleName}"  required autofocus="autofocus">
+					<select style="color:#777" name="roleName" id="roleName" class="select" th:field="*{roleName}"  required autofocus="autofocus">
 					<option value="">Role</option>
 					<option value="Trainer">Trainer</option>
 					
 					<option value="Trainee">Trainee</option>
+					
+					<option value="Trainer & Trainee">Both</option>
 					
 					
 					</select>
@@ -291,9 +305,10 @@
 					
 				</div>
 				<div class="form-group">
-			   <input id="password" class = "form-control" type="password" placeholder=" password"   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  th:field="*{password}" name="password" required autofocus="autofocus"/>
+			   <input id="password" class = "form-control" type="password" placeholder=" Password"   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  th:field="*{password}" name="password" required autofocus="autofocus"/>
+					<!--                 <i class="bi bi-eye-slash" id="togglePassword"></i> -->
 					
-					<input type="password" class = "form-control"  placeholder="Confirm password"  name="password2" required autofocus="autofocus"/>
+					<input type="password" class = "form-control"  placeholder="Confirm-password"  name="password2" required autofocus="autofocus"/>
 				
 				</div>
 				
@@ -425,7 +440,21 @@ function myFunction() {
 
 
 </script>
+<!--  <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
 
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+       
+    </script> -->
 
 
 </body>

@@ -1,352 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 *{
+	margin:0;
 	padding:0;
-	margin: 0;
-/*	padding-left: -10;*/
 	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
 }
 
 body{
-		padding:0;
-	
-	width: 100%;
-	height:100%;
-	overflow: hidden;
-	background-image: url(../img/3.jpg);  
+	background:url(../img/slotimage.jpg);
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position: center center;
+	background-attachment:fixed;
 }
-.inner-layer{
-		padding:0;
-	
-position: absolute; 
+
+.contactUs{
+	position: absolute;
 	width: 100%;
-	height:100%;
-/*	background-color: rgba(0,147,173,0.7); */
-	background-color:rgb(128,128,0,0.7) ; 
+	padding: 40px 100px;
+	
+}
+
+.contactUs .title{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	
+}
+
+.contactUs .title h2{
+	color: rgb(255, 255, 255);
+	font-weight: 500;
+}
+
+.form{
+	grid-area: form;
+	border-radius:30px;
+}
+
+.info{
+	grid-area: info;
+}
+
+.map{
+	grid-area: map;
+  border-radius:30px;
+}
+
+.contact{
+	padding: 40px;
+	
+	box-shadow: 0 5px 35px rgba(0,0,0,0.15);
+background:rgba(0,0,0,0.7);}
 
 
-	overflow: auto;
-}
-.form-data{
-		border-radius: 10px;
+.box{
+	margin-top:-10px;
+	position: relative;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+    grid-template-rows: 0fr 4fr;
+    grid-template-areas:
+    "form info"
+   "form map";
+   grid-gap:5px; 
+	border-radius:30px;
 	
-		margin-top: 20%;
-			margin-bottom: 0%;
-	height:1100px;
-	 background-color: #c0c0c0; 
+}
+
+.formBox{
+	position: relative;
+	width: 100%;
 	
 }
-.form-body{
-	padding: 20px;
+.formBox .row50{
+	display: flex;
+	gap: 20px;
+	
 }
-.form-head{
+
+.inputBox{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 60px;
+	width: 50%;
+	
+	
+}
+
+.inputBox input{
 	padding: 10px;
-	border-bottom: 1px solid #CCC;
-}
-.form-head h2{
-	font-size: 22px;
-	font-weight: 600;
-}
-.no-margin{
-	margin: 0px;
-}
-
-.form-row{
-	margin-bottom: 15px;
-}
-.form-control{
-	background-color: #fff;
-	border-radius: 10px;
-
-}
-.form-control:focus{
-	box-shadow: none;
-	border: 3px solid #138496; 
-}
-.btn-appointment{
-	background-color: #138496 !important; 
-	border-color: #138496 !important; 
-	
-
-	width: 100%;
-}
-.content{
-	margin-top: 15%;
-	text-align: center;
-	color: #ffffff;
-	padding: 30px;
-}
-.content h1{
-	font-weight: 600;
-	font-size: 3.5rem;
-		margin-top: 150px;
+	font-size: 1.1em;
+	outline: none;
+	border: 1px solid #333;
+		background:#fff;
 	
 }
-.content h2{
-	font-weight: 600;
-	font-size:2.5rem;
-	margin-top: 20px;
-}
-.content p{
-	font-size: 22px;
-	margin-top: 30px;
-}
-.datepicker td, .datepicker th{
-	padding: 5px;
-}
-.dropdown-menu.datepicker{
-	max-width: 300px !important;
-}
-
-
-
-@media screen and (max-width: 976px){
+ 
+ .inputBox textarea{
+ padding: 10px;
+	font-size: 1.1em;
+	outline: none;
+	border: 1px solid #333;
+	resize: none;
+	min-height: 220px;
+	margin-bottom: 10px;
 	
-}
-
-
-
-
-
-/* <!DOCTYPE html>
-<html xmlns:th="http://www.thymeLeaf.org"
-xmlns:sec="http://www.thymeLeaf.org/thymeLeaf-extras-springsecurity3">
-<head>
-<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home Page</title>
-
-    <!-- Bootstrap CSS -->
-                <link rel="stylesheet" type="text/css" href="css/slotCreation.css" />
-                  <link rel="stylesheet" type="text/css" href="css/menu.css" />
-    
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-   <style>
-   
-   
-body{
-	background:#25383B
+ }
+.submit input[type="submit"]{
+	background: #ff578b;
+	color:#fff;
+	border: none;
+	font-size: 1.1em;
+	max-width: 120px;
+	font-weight:500;
+	cursor: pointer;
+	padding: 14px 15px;
 } 
-   
-   button[type=submit]{
-	width:20%;
-	box-sizing:border-box;
-	padding:5px 0;
-	margin-top:30px;
-	outline:none;
-	border:none;
-    background:#0000ff;
-	opacity:0.7;
-	font-size:20px;
-	color:#fff;
+
+.inputBox span{
+	color: white;
 }
 
-input[type=submit]{
-	width:30%;
-	box-sizing:border-box;
-	padding:5px 0;
-	margin-top:30px;
-	outline:none;
-	border:none;
-background:red;
-	opacity:0.7;
-	font-size:20px;
-	color:#fff;
-	
-}
-
-.proceed{
-
-width:15%;
-	box-sizing:border-box;
-	padding:5px 0;
-	margin-top:30px;
-	outline:none;
-	border:none;
-    background:green;
-	opacity:0.7;
-	font-size:20px;
-	color:#fff;
-
-
-}
-
-/*   
-   </style> 
-</head>
-<body class="landing">
-
-		<!-- Header -->
-			<header id="header" class="alt">
-						<h5><a href="index">EQUISYM</a></h5>
-			
-				<a href="#nav">Menu</a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li><a th:href="index">Home</a></li>
-					<li><a th:href="@{/}">About Us</a></li>
-					<li><a th:href="@{/}">Our Gallery</a></li>
-					<li><a href="partnersInfo">Santa's Knights</a></li>
-					<li><a href="conductUs">Contact Us</a></li>
-					<li><a href="https://www.santasknights.org/membership">Donate</a></li>
-					<li><a href="login">Login & Registration</a></li>
-					<!-- <li><a href="elements.html">EEEE Us</a></li> -->
-				</ul>
-			</nav>
-<body link="black" vlink="red" alink="blue">
-	<div class= "container" align="center" style="color:white">
-		<h1> Main Page</h1>
-		Welcome <span sec:authentication="principal.username" >Users</span>
-	</div>
-	<div align="center">
-		<ol>
-			<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-			<l1><form  th:action="@{/slot_index/create}" method="post" class="form-wrap">
-			
-				<button type="submit" > 
-				Create Slot
-				</button>
-				</form>
-			</l1>
-			<l1><form th:action="@{/slot_index/update}" method="post" class="form-wrap">
-				<div th:if="${param.Fail}">
-						<div class= "alert alert-danger" align="center">
-						<div style="color:red">
-							No Slot Found!!
-						</div>
-						</div>
-				
-				    </div>
-				    <div>
-				<button type="submit" onclick="toggleText();" th:href="@{/slot}"> 
-				Update Slot
-				</button>
-				</div>
-				
-				 
-				<div style="color:white">
-				<label>Select Slot</label>
-				</div>
-				<div >
-				<select style="color:#777" id="slotd" name = "slotd" class="form-control"  required  >
-				<option value="">Choose</option>
-				<option th:each="s2: ${slist2}"
-				th:value="${s2.id}" 
-				th:text = "${s2.course} + ' on ' +${s2.date} + '(' + ${s2.day} + ') from ' + ${s2.timeIn} + ' till ' + ${s2.timeOut}"
-				>  
-				</option>
-				</select>
-				</div>
-				<script type="text/javascript">
-					function getValue()
-					{
-						selectElement = document.querySelector('#slotd');
-						return selectElement.value;
-					}
-				</script>
-				
-				
-				<script>
-				function toggleText(){
-					  var x = document.getElementById("slotd");
-					  if (x.style.display === "none") {
-					    x.style.display = "block";
-					  } else {
-					    x.style.display = "none";
-					  }
-					}
-					
-				</script>
-				
-				
-				
-				<!-- div class="form-row">
-                    
-                        <div class="col-lg-6 "align="center">
-					 
-					          <input type="submit"  name="update-proceed" id="update-proceed"
-								onSubmit= "return function();" class="btn1 " value="Proceed"/>
-                      </div>
-                    </div-->
-                    <br>
-                   
-				</form>
-			</l1>
-			<l1>
-			<div th:if="${param.Success}">
-				<div class= "alert alert-info " align="center">
-				
-			Slot Successfully deleted!!
-				
-				</div>
-				</div>
-			<div th:if="${param.Fail}">
-						<div class= "alert alert-danger" align="center">
-						<div style="color:red">
-							No Slot Found!!
-						</div>
-						</div>
-				
-				    </div>
-			<form th:action="@{/slot_index/delete}" method="post" class="form-wrap">
-			
-				 <div>   
-				<button  type="submit" onclick="toggleText2();"> 
-				Delete Slot
-				</button>
-				</div>
-				<div style="color:white">
-				<label>Select Slot</label>
-				</div>
-				<select style="color:#777" id="slot_details2" name = "slot_details2" class="form-control" required  >
-				<option value="">Choose</option>
-				<option th:each="s2: ${slist2}" 
-				th:value="${s2.id}" 
-				th:text = "${s2.course} + ' on ' +${s2.date} + '(' + ${s2.day} + ') from ' + ${s2.timeIn} + ' till ' + ${s2.timeOut}">  </option>
-				</select>
-				<script>
-				function toggleText2(){
-					  var x = document.getElementById("slot_details2");
-					  if (x.style.display === "none") {
-					    x.style.display = "block";
-					  } else {
-					    x.style.display = "none";
-					  }
-					}
-					
-				</script>
-				
-				 <button class="proceed" onclick="javascript: getValue();" th:href> Proceed</button>
-				<div class="col-lg-6 " align="center">
-					 
-					          <input type="submit" onclick="message();" name="delete-proceed" id="delete-proceed"
-								class="btn1 " value="Delete"/>
-                      </div>
-<script type="text/javascript">
-function message()
+@media (max-width:991px)
 {
-	var result = window.confirm("Do you wish to delete this slot ?");
-	if(result)
-		return true;
-	else
-		return false;
+.contactUs
+{
+	padding:20px;
+}
+.box {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "form"
+        "info"
+        "map";
+} 
+.formBox .row50 {
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+}
+.inputBox {
+    
+    width: 100%;
 }
 
-</script>
-				</form>
-			</l1>
-			
-		</ol>
-	</div>
-	
- <!-- Scripts -->
-			<script src="/js/jquery.min.js"></script>
-			<script src="/js/skel.min.js"></script>
-			<script src="/js/util.js"></script>
-			<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
-			<script src="/js/main.js"></script> 
-	
-</body>
-</html>   */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,277 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+		 <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+
+<title>Slot Creation</title>
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
+                  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slothomemenu.css">
+                  
+      
+<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet"
+        type="text/css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     
+</head>
+  
+  <body>
+  				<!-- Header -->
+			<header id="header" class="alt">
+			<h5><a href="index">EQUISYM</a></h5>
+			
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a th:href="index">Home</a></li>
+					<li><a href="slot">About Us</a></li>
+					<li><a th:href="@{/}">Our Gallery</a></li>
+					<li><a href="partnersInfo">Santa's Knights</a></li>
+					<li><a href="conductUs">Contact Us</a></li>
+					<li><a href="https://www.santasknights.org/membership">Donate</a></li>
+                     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>					
+					<!-- <li><a href="elements.html">EEEE Us</a></li> -->
+				</ul>
+			</nav>	 
+  
+  
+    					<form th:action="@{/slot}" method="post" th:object="${slot}" >
+    					<input type="hidden"  id = "slid" name="slid" th:value="${slid}" />  
+  
+      <div class="contactUs">
+      <div class="title" style="color:white">
+      
+      <h2>Create Slot</h2>
+      </div> 
+      <div class="box">
+      <div class="contact form">
+      <div class="form">
+         <div class="formBox">
+           <div class="row50">
+         
+         <div class="inputBox">
+         <span>Date</span>
+ 			 <input type="date" id="inputdate" name="inputdate" class="form-control"  th:field="*{date}" required autofocus="autofocus" >
+           </div>
+            
+          <div class="inputBox">
+                   <span>TimeIn</span>
+          
+              <input type = "time" id="timeIn"  th:field="*{timeIn}" class="form-control" required autofocus="autofocus"/>
+           </div> 
+           
+          <div class="inputBox">
+                   <span>TimeOut</span>
+          
+              <input type = "time" id="timeOut" class="form-control" th:field="*{timeOut}" name="timeOut" min="00.30" onblur = " checktime(this)" required  autofocus="autofocus"/>
+           </div> 
+           
+           </div>
+           
+            <div class="row50">
+             
+          <div class="inputBox">
+                   <span>Address1</span>
+          
+                <input type = "text" id="address1" class="form-control" maxlength="15" th:field="*{address1}" required autofocus="autofocus"/>
+			</div>
+		   <div class="inputBox">
+		            <span>Address2</span>
+		   
+				<input type = "text" id="address2" class="form-control" th:field="*{address2}" maxlength="15" required autofocus="autofocus"/>
+			</div>
+			<div class="inputBox">
+			         <span>Landmark</span>
+			
+				<input type = "text" id="landmark" class="form-control" th:field="*{landmark}" required autofocus="autofocus"/>
+			</div>
+			</div>
+			
+			 <div class="row50">
+			
+				<div class="inputBox">
+			         <span>City</span>
+			
+				<input type = "text" id="country" class="form-control" th:field="*{zipCode}" maxlength="5" required autofocus="autofocus"/>
+			</div>	
+			
+			<div class="inputBox">
+			         <span>State</span>
+			
+				<input type = "text" id="city" class="form-control" th:field="*{zipCode}" maxlength="5" required autofocus="autofocus"/>
+			</div>	
+			
+			
+			<div class="inputBox">
+			         <span>Zipcode</span>
+			
+				<input type = "text" id="zipCode" class="form-control" th:field="*{zipCode}" maxlength="5" required autofocus="autofocus"/>
+			</div>
+			</div>
+			
+						 <div class="row50">
+			
+	 		<div class="inputBox">
+			         <span>Latitude</span>
+			
+					<input type = "number" id="latitude" class="form-control" th:field="*{latitude}"  placeholder="Latitude" readonly required autofocus="autofocus"/>
+			</div>	
+			
+			<div class="inputBox">
+			         <span>Longitude</span>
+			
+					<input type = "number" id="longitude" class="form-control" th:field="*{longitude}"  placeholder="Longitude" readonly required autofocus="autofocus"/>
+			</div>	 
+					
+			</div>	
+			
+			 <div class="row50">
+			 			<div class="inputBox">
+			 			         <span>Capacity</span>
+			 			   <input type = "text" id="capacity" class="form-control" th:field="*{capacity}" required autofocus="autofocus"/>
+			 			         
+			 
+			 </div>
+			 <div class="inputBox">
+			 			       <span>Course</span>
+					<select style="color:#777" name="course" id="course" class="form-control" th:field="*{course}"  required autofocus="autofocus">
+					<option value="">SELECT COURSE</option>
+					<option value="Karate">Karate</option>
+					<option value="Boxing">Boxing</option>
+					<option value="Judo">Judo</option>
+					</select>
+			 			         
+			 
+			 </div>
+			 </div>	
+				
+			 <div class="row100" >
+			
+		   
+					
+			</div>	
+				
+            
+         </div>
+         
+         </div>  
+         
+         </div>
+      
+      
+      
+     
+   <!--     <div class="contact info"></div>  -->
+      <div class="contact map">
+      				<div id="map" class="map" style="height:500px"></div>
+      				<br>
+      				 <div class="submit" align="center">
+			    <input type="submit" value="submit">
+			</div>	
+      
+      
+      </div>
+       
+      </div>
+     </div>
+   
+</form>
+ 
+ 	<script type = "text/javascript">
+				
+
+				 var map = new ol.Map({
+			        target: 'map',
+			        layers: [
+			          new ol.layer.Tile({
+			            source: new ol.source.OSM()
+			          })],
+			        view: new ol.View({
+			          center: ol.proj.fromLonLat([78.136602, 8.742531]),
+			          zoom: 4
+			        })
+			      });
+			      
+
+			      map.on('click', function(evt){
+				    console.info(evt.pixel);
+				    console.info(map.getPixelFromCoordinate(evt.coordinate));
+				    console.info(ol.proj.toLonLat(evt.coordinate));
+				    var coords = ol.proj.toLonLat(evt.coordinate);
+				    var lat = coords[1];
+				    var lon = coords[0];
+				    var locTxt = "Latitude: " + lat + " Longitude: " + lon;
+				    // coords is a div in HTML below the map to display
+				    document.getElementById("latitude").value = lat;
+				    document.getElementById("longitude").value = lon;
+				   
+
+				});
+
+			      
+
+				</script>
+<script>
+	$(function(){
+	    var dtToday = new Date();
+	 
+	    var month = dtToday.getMonth() + 1;
+	    var day = dtToday.getDate();
+	    var year =dtToday.getFullYear();
+	    if(month < 10)
+	        month = '0' + month.toString();
+	    if(day < 10)
+	        day = '0' + day.toString();
+	    var maxDate = year + '-' + month + '-' + day;
+	   
+	    $('#inputdate').attr('min', maxDate);
+	});
+</script>
+
+<script>
+function checktime(form){
+	//start time
+	var start_time = $("#timeIn").val();
+	//end time
+	var end_time = $("#timeOut").val();
+	//by this you can see time stamp value in console via firebug
+	console.log("Time1: "+ start_time + " Time2: " + end_time);
+
+	if(start_time> end_time || start_time==end_time) {
+	//$("#timeIn").after('<span class="error"  style="color:red"><br>Time In must be smaller then TimeOut.</span>');
+	//$("#timeOut").after('<span class="error" style="color:red"><br>Time Out must be bigger then Time In.</span>');
+	
+	alert('timeOut should be greater than timeIn ')
+     $("#timeOut").val('');
+    return false;
+	}
+}
+
+
+
+</script>
+
+ <!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/js/main.js"></script>
+			
+ 
+  </body>
+</html>
+
+
+ 

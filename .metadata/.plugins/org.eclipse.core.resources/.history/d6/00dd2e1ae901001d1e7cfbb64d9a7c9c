@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Check Status</title>
+</head>
+<body>
+<form th:action="@{/admin_page2}" method="post">
+	<label>Select Role</label>
+	<select style="color:#777" id="rolename" name = "rolename"  class="field" autofocus="autofocus" th:onchange="this.form.submit()">
+	<option value="" >Choose Role</option>
+	<option value= "Trainer"> Trainer </option>
+	<option value="Trainer & Trainee"> Trainer and Trainee </option>
+	</select>
+	<button onclick="history.back()"> Go Back</button>
+	
+	<table class = "table table-striped">
+		<thead class= "thead-dark">
+			<th scope = "row">Id</th>
+			<th scope = "row">First Name</th>
+			<th scope = "row">Last Name</th>
+			<th scope = "row">Contact Number</th>
+			<th scope = "row">Email Id</th>
+			<th scope = "row">Admin Verified</th>
+		</thead>
+		<tbody>
+		<tr th:each="list : ${pending_list}">
+			<td th:text="${list.id}"></td>
+			<td th:text="${list.firstName}"></td>
+			<td th:text="${list.lastName}"></td>
+			<td th:text="${list.contact}"></td>
+			<td th:text="${list.email}"></td>
+			<td th:text="${list.adminVerified}"></td>
+		</tr>
+		</tbody>
+	
+	</table>
+	</form>		
+	
+	
+</body>
+</html>

@@ -1,3 +1,7 @@
+
+
+
+
 * {
     margin: 0px;
     padding: 0px;
@@ -6,13 +10,12 @@
 
 body {
  /* background: #0fb098; */
- background: #25383B;
- background-size:cover;
-	background-repeat: no-repeat;
-	background-position:center center;
-	background-attachment: fixed;
+/* background: #25383B; */
+ 	background: url(../img/forgotimage1.jpg);
  
- }
+ 
+ 
+ }                 
  
   .photo{
  background:black;
@@ -127,7 +130,13 @@ input[type=submit]{
 }
 
 
-
+.field{
+  position: relative;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  background: rgba(255,255,255,0.94);
+}
 
 
 

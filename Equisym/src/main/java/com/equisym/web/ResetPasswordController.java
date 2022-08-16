@@ -32,6 +32,7 @@ public class ResetPasswordController
 		this.userService = userService;
 	}
 	
+
 	@ModelAttribute("user")
 	public UserRegistrationDto userRegistrationDto()
 	{
@@ -46,7 +47,8 @@ public class ResetPasswordController
 	}
 	*/
 	
-	
+	//It will check whether reset password code is matching or not.
+	//Once validated then it will proceed to reset password page.
 	@GetMapping
 	public String resetPassword(@Param("code") String code, Model model) 
 	{
@@ -62,6 +64,7 @@ public class ResetPasswordController
 		}
 	}
 	
+	//Here it will update the user's new password.
 	@PostMapping
 	public String processResetPassword(HttpServletRequest request, Model model) 
 	{

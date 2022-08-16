@@ -1,4 +1,4 @@
-          <!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeLeaf.org">
 <head>
 		 <meta charset="utf-8">
@@ -7,190 +7,188 @@
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
 
 <title>Slot Creation</title>
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
-              <link rel="stylesheet" type="text/css" href="css/menu.css" />
                   <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slothomemenu.css">
+                  
       
 <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet"
         type="text/css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <style>
-			.map{
-			height:300px;
-			width:100%;
-			}
-			</style> 	
+     
 </head>
-<body>
-	<!-- HTML Slot Creation form -->
-        	
-		 <div class="inner-layer">
-	
-    	<div class="container">
-	           <div class="row ">
-	            <div class="col-sm-7 " >
-                    <div class="content"> 
-                    <div>
-              <h1> Book/Update your slot</h1>
-              <p> “. . to be exceptional in martial arts, you must possess the "4 C's" : Consistency, Commitment, Creativity and Competence”</p>
-              <p> “Martial arts is not about fighting, it is about being fit and healthy, both physiologically and psychologically.”</p>
-               </div>
-	            </div>
-	            </div>
-	            
-			<div class="col-sm-5 ">
-			<!-- success message -->
- 			<div th:if="${param.Success}">
-				<div class= "alert alert-info">
-				You've Successfully Created Slot!!
-				</div>
-				
+  
+  <body>
+  				<!-- Header -->
+			<header id="header" class="alt">
+			<h5><a href="index">EQUISYM</a></h5>
+			
+				<a href="#nav">Menu</a>
+			</header>
 
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a th:href="index">Home</a></li>
+					<li><a href="slot">About Us</a></li>
+					<li><a th:href="@{/}">Our Gallery</a></li>
+					<li><a href="partnersInfo">Santa's Knights</a></li>
+					<li><a href="conductUs">Contact Us</a></li>
+					<li><a href="https://www.santasknights.org/membership">Donate</a></li>
+                     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>					
+					<!-- <li><a href="elements.html">EEEE Us</a></li> -->
+				</ul>
+			</nav>	 
+  
+  
+    					<form th:action="@{/slot}" method="post" th:object="${slot}" >
+    					<input type="hidden"  id = "slid" name="slid" th:value="${slid}" />  
+  
+      <div class="contactUs">
+      <div class="title" style="color:white">
+      
+      <h2>Create Slot</h2>
+      </div> 
+      <div class="box">
+      <div class="contact form">
+      <div class="form">
+         <div class="formBox">
+           <div class="row50">
+         
+         <div class="inputBox">
+         <span>Date</span>
+ 			 <input type="date" id="inputdate" name="inputdate" class="form-control"  th:field="*{date}" required autofocus="autofocus" >
+           </div>
+            
+          <div class="inputBox">
+                   <span>TimeIn</span>
+          
+              <input type = "time" id="timeIn"  th:field="*{timeIn}" class="form-control" required autofocus="autofocus"/>
+           </div> 
+           
+          <div class="inputBox">
+                   <span>TimeOut</span>
+          
+              <input type = "time" id="timeOut" class="form-control" th:field="*{timeOut}" name="timeOut" min="00.30" onblur = " checktime(this)" required  autofocus="autofocus"/>
+           </div> 
+           
+           </div>
+           
+            <div class="row50">
+             
+          <div class="inputBox">
+                   <span>Address1</span>
+          
+                <input type = "text" id="address1" class="form-control" maxlength="15" th:field="*{address1}" required autofocus="autofocus"/>
+			</div>
+		   <div class="inputBox">
+		            <span>Address2</span>
+		   
+				<input type = "text" id="address2" class="form-control" th:field="*{address2}" maxlength="15" required autofocus="autofocus"/>
+			</div>
+			<div class="inputBox">
+			         <span>Landmark</span>
+			
+				<input type = "text" id="landmark" class="form-control" th:field="*{landmark}" required autofocus="autofocus"/>
+			</div>
 			</div>
 			
+			 <div class="row50">
 			
-		
-			<div class="form-data">
+				<div class="inputBox">
+			         <span>City</span>
 			
-		             <div class="form-head">
-		             
-		             
-		             </div>
-		             
-		             <div class="form-body">
-		             
+				<input type = "text" id="city" class="form-control" th:field="*{city}" maxlength="10" required autofocus="autofocus"/>
+			</div>	
 			
-		
-  					<form th:action="@{/slot}" method="post" th:object="${slot}" >
-			<input type="hidden"  id = "slid" name="slid" th:value="${slid}" />   
-				<!--div class="form-group">
-					<label class = "control-label" for="day">
-						Day
-					</label>
-					<select style="color:#777" id="day" class="form-control" th:field="*{day}" required autofocus="autofocus">
-					<option value="">Choose</option>
-					<option value="Monday">Monday</option>
-					<option value="Tuesday">Tuesday</option>
-					<option value="Wednesday">Wednesday</option>
-					<option value="Thursday">Thursday</option>
-					<option value="Friday">Friday</option>
-					<option value="Saturday">Saturday</option>
-					<option value="Sunday">Sunday</option>
-					</select>
-				</div-->
-				
- 				<div class=" row form-row " >
-					<label class = "control-label" for="date" style="color:black"> 
-						Date
-					</label>
-				<!-- 	<input type = "date" id="date" class="form-control" name = "date" th:value = "${date}" required autofocus="autofocus" />  -->
- 								<input type="date" id="inputdate" name="inputdate"  th:field="*{date}" class="form-control"  required autofocus="autofocus" >
-				
-				</div>
-								
-				
-				<div class=" row form-row " >
-					<label class = "control-label" for="timeIn" style="color:black">
-						Time In
-					</label>
-					<input type = "time" id="timeIn" class="form-control" th:field="*{timeIn}" required autofocus="autofocus"/>
-				</div>
-				
-				
-				<div class=" row form-row " >	
-				
-					<label class = "control-label" for="timeOut" style="color:black">
-						Time Out
-					</label>
-					<input type = "time" id="timeOut" class="form-control" th:field="*{timeOut}" name="timeOut" min="00.30" required autofocus="autofocus"/>
-				</div>
-				<div class=" row form-row " >
-					<label class = "control-label" for="address1" style="color:black">
-						Address Line 1
-					</label>
-					<input type = "text" id="address1" class="form-control" th:field="*{address1}" required autofocus="autofocus"/>
-				</div>
-				<div class=" row form-row " >
-					<label class = "control-label" for="address2" style="color:black">
-						Address Line 2
-					</label>
-					<input type = "text" id="address2" class="form-control" th:field="*{address2}" required autofocus="autofocus"/>
-				</div>
-				<div class=" row form-row " >
-					<label class = "control-label" for="landmark" style="color:black">
-						Landmark
-					</label>
-					<input type = "text" id="landmark" class="form-control" th:field="*{landmark}" required autofocus="autofocus"/>
-				</div>
-				<div class=" row form-row " >
-					<label class = "control-label" for="zipCode" style="color:black">
-						Zip Code
-					</label>
-					<input type = "text" id="zipCode" class="form-control" th:field="*{zipCode}" required autofocus="autofocus"/>
-				</div>
-				<div class=" row form-row ">	
-				
-					<label class = "control-label" for="latitude" style="color:black">
-						Latitude
-					</label>
+			<div class="inputBox">
+			         <span>State</span>
+			
+				<input type = "text" id="state" class="form-control" th:field="*{state}" maxlength="10" required autofocus="autofocus"/>
+			</div>	
+			
+			
+			<div class="inputBox">
+			         <span>ZipCode</span>
+			
+				<input type = "text" id="zipCode" class="form-control" th:field="*{zipCode}" maxlength="5" required autofocus="autofocus"/>
+			</div>
+			</div>
+			
+						 <div class="row50">
+			
+	 		<div class="inputBox">
+			         <span>Latitude</span>
+			
 					<input type = "number" id="latitude" class="form-control" th:field="*{latitude}"  placeholder="Latitude" readonly required autofocus="autofocus"/>
-				</div>
-				
-				<div class=" row form-row ">	
-				
-					<label class = "control-label" for="longitude" style="color:black">
-						Longitude
-					</label>
-					<input type = "number" id="longitude" class="form-control" th:field="*{longitude}"  placeholder="Longitude" readonly required autofocus="autofocus"/>
-				
-				</div>
-				
-
-				<div class=" r form-row ">
+			</div>	
 			
-					<label class = "control-label" for="course" style="color:black">
-						Course
-					</label>	
-					<select style="color:#777" name="course" id="course" class="select" th:field="*{course}"  required autofocus="autofocus">
+			<div class="inputBox">
+			         <span>Longitude</span>
+			
+					<input type = "number" id="longitude" class="form-control" th:field="*{longitude}"  placeholder="Longitude" readonly required autofocus="autofocus"/>
+			</div>	 
+					
+			</div>	
+			
+			 <div class="row50">
+			 			<div class="inputBox">
+			 			         <span>Capacity</span>
+			 			   <input type = "text" id="capacity" class="form-control" th:field="*{capacity}" required autofocus="autofocus"/>
+			 			         
+			 
+			 </div>
+			 <div class="inputBox">
+			 			       <span>Course</span>
+					<select style="color:#777" name="course" id="course" class="form-control" th:field="*{course}"  required autofocus="autofocus">
 					<option value="">SELECT COURSE</option>
 					<option value="Karate">Karate</option>
 					<option value="Boxing">Boxing</option>
 					<option value="Judo">Judo</option>
 					</select>
-				</div>
-				<div class=" row form-row " >
-					<label class = "control-label" for="capacity" style="color:black">
-						Capacity
-					</label>
-					<input type = "text" id="capacity" class="form-control" th:field="*{capacity}" required autofocus="autofocus"/>
-				</div>
+			 			         
+			 
+			 </div>
+			 </div>	
 				
+			 <div class="row100" >
+			
+		   
+					
+			</div>	
 				
-                            
+            
+         </div>
+         
+         </div>  
+         
+         </div>
+      
+      
+      
+     
+   <!--     <div class="contact info"></div>  -->
+      <div class="contact map">
+      				<div id="map" class="map" style="height:500px"></div>
+      				<br>
+      				 <div class="submit" align="center">
+			    <input type="submit" value="submit">
+			</div>	
+      
+      
+      </div>
+       
+      </div>
+     </div>
+   
+</form>
  
-				<div id="map" class="map"></div>
-				
-								<div class=" row form-row ">
-								<button class="btn btn-success btn-appointment" onClick = "return checktime(this) ">
-								  Book/Update Slot
-								</button>
-								</div>
-						</form>		
-				
-</div>				
-</div>
-</div>
-		</div>
-	</div>
-	</div>
-								
-								
-	
-				<script type = "text/javascript">
+ 	<script type = "text/javascript">
 				
 
 				 var map = new ol.Map({
@@ -251,9 +249,12 @@ function checktime(form){
 	console.log("Time1: "+ start_time + " Time2: " + end_time);
 
 	if(start_time> end_time || start_time==end_time) {
-	$("#timeIn").after('<span class="error"  style="color:red"><br>Time In must be smaller then TimeOut.</span>');
-	$("#timeOut").after('<span class="error" style="color:red"><br>Time Out must be bigger then Time In.</span>');
-	    return false;
+	//$("#timeIn").after('<span class="error"  style="color:red"><br>Time In must be smaller then TimeOut.</span>');
+	//$("#timeOut").after('<span class="error" style="color:red"><br>Time Out must be bigger then Time In.</span>');
+	
+	alert('timeOut should be greater than timeIn ')
+     $("#timeOut").val('');
+    return false;
 	}
 }
 
@@ -261,15 +262,16 @@ function checktime(form){
 
 </script>
 
-</body>
-
-</html>       
-
-
-
-
+ <!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/js/main.js"></script>
+			
  
- 
- 
- 
+  </body>
+</html>
+
+
  

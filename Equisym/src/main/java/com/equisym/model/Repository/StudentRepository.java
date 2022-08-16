@@ -18,9 +18,8 @@ public interface StudentRepository extends JpaRepository<Students,Long>
 {
 
 @Query("SELECT s FROM students s WHERE s.email =?1 and s.date = ?2 and s.timeIn>= ?3 and s.timeOut<=?4")
-List<Students> getSlots(String email, LocalDate date, String timeIn, String timeOut);
+Students getSlots(String email, LocalDate date, String timeIn, String timeOut);
 	
-Students findByEmail(String email);
 
 	
 	

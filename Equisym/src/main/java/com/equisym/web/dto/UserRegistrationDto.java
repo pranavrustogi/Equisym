@@ -19,6 +19,7 @@ public class UserRegistrationDto {
 	private String pinCode;
 	private String contact;
 	private boolean enabled=false;
+	private boolean adminVerified = false;
 	private String verificationCode = RandomString.make(64);
 	private String resetPasswordCode = RandomString.make(64);
 	private Date registrationDate = new Date(System.currentTimeMillis());
@@ -131,6 +132,12 @@ public class UserRegistrationDto {
 	}
 	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
+	}
+	public boolean isAdminVerified() {
+		return adminVerified;
+	}
+	public void setAdminVerified(boolean adminVerified) {
+		this.adminVerified = adminVerified;
 	}
 	
 	

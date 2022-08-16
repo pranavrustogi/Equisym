@@ -54,21 +54,27 @@ public class Students
 	private String timeOut;
 	@Column(name="SSN_NO")
 	private String ssn;
-	@Column(name="ADDRESS1")
+	@Column(name="SLOT_ADDRESS1")
 	private String address1;
-	@Column(name="ADDRESS2")
+	@Column(name="SLOT_ADDRESS2")
 	private String address2;
 	
-	@Column(name="LANDMARK")
+	
+	@Column(name="SLOT_LANDMARK")
 	private String landmark;
-	@Column(name="ZipCode")
+	
+	@Column(name="SLOT_CITY")
+	private String city;
+	@Column(name="SLOT_STATE")
+	private String state;
+	@Column(name="SLOT_ZIPCODE")
 	private String zipCode;
 	
 	public Students()
 	{}
 
 	public Students(String firstName, String lastName, String email,String contact,String roleName ,String course, LocalDate date, 
-			DayOfWeek day, String timeIn, String timeOut, String ssn, String address1, String address2, String landmark, String zipCode) 
+			DayOfWeek day, String timeIn, String timeOut, String ssn, String address1, String address2, String landmark, String zipCode, String city, String state) 
 	{
 		super();
 		this.firstName = firstName;
@@ -87,6 +93,8 @@ public class Students
 		this.address2 = address2;
 		this.landmark = landmark;
 		this.zipCode = zipCode;
+		this.city= city;
+		this.state= state;
 	
 	}
 
@@ -208,6 +216,24 @@ public class Students
 
 	public void setLandmark(String landmark) {
 		this.landmark = landmark;
+	}
+	
+	
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public String getZipCode() {

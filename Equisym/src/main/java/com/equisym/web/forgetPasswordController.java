@@ -35,12 +35,16 @@ public class forgetPasswordController
 	
 	}
 	
+	//Once we click on forget password link then it will load forget page.
 	@GetMapping
 	public String forgetPasswordForm()
 	{
 		return "forgot";
 	}
 	
+	// This will take the mail from the page and then then check whether that  Mail Id is there or not.
+	// After that it will check whether user verified his mail id or not, If not then it will show Verify failure Notification.
+	// If user is verified, then it will send reset password mail to user containing reset code.
 	
 	@PostMapping
 	public String resetUserPassword(Users user,HttpServletRequest request) throws UnsupportedEncodingException, MessagingException

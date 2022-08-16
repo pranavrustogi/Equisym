@@ -15,5 +15,5 @@ public interface StudentService
 {
 	Students save(StudentsDto studentDto);
 	
-	void sendEmail(String email);
+	void sendEmail(String email,LocalDate date, String timeIn ,String timeOut);
 }

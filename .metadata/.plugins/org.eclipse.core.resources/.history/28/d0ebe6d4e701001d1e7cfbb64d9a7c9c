@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Page</title>
+</head>
+<body>
+<form th:action="@{/admin_page}" method="post">
+	<label>Select Role</label>
+	<select style="color:#777" id="role" name = "role"  class="field" autofocus="autofocus" th:onchange="this.form.submit()">
+	<option value="" >Choose Role</option>
+	<option value= "Trainer"> Trainer </option>
+	<option value="Trainer & Trainee"> Trainer and Trainee </option>
+	</select>
+	<a th:href="@{/admin_page2}" class="button" type="button">Check Status</a>
+	<h1> List Of Trainers with Admin Pending Approvals</h1>
+	<table class = "table table-striped">
+		<thead class= "thead-dark">
+			<th scope = "row">Id</th>
+			<th scope = "row">First Name</th>
+			<th scope = "row">Last Name</th>
+			<th scope = "row">Contact Number</th>
+			<th scope = "row">Email Id</th>
+			<th scope = "row">Actions</th>
+		</thead>
+		<tbody>
+		<tr th:each="list : ${pending_list}">
+			<td th:text="${list.id}"></td>
+			<td th:text="${list.firstName}"></td>
+			<td th:text="${list.lastName}"></td>
+			<td th:text="${list.contact}"></td>
+			<td th:text="${list.email}"></td>
+			<td>
+			<a th:href = "@{'/admin_page/approve/' + ${list.id}}" class="btn btn-info" role="button" onclick="myFunction1();"> Approve</a>
+			&nbsp;&nbsp;&nbsp;
+			<a th:href = "@{'/admin_page/deny/' + ${list.id}}" class="confirmation" role="button">Deny</a>
+			</td>
+			</tr>
+		</tbody>
+	
+	</table>
+	</form>		
+	
+<script>
+function myFunction1() 
+{
+
+	alert("Approving");
+}
+</script>
+<script type="text/javascript">
+    var elems = document.getElementsByClassName('confirmation');
+    var confirmIt = function (e) {
+        if (!confirm('Are you sure?')) e.preventDefault();
+    };
+    for (var i = 0, l = elems.length; i < l; i++) {
+        elems[i].addEventListener('click', confirmIt, false);
+    }
+</script>
+				
+</body>
+</html>

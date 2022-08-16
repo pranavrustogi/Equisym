@@ -40,16 +40,16 @@ public class StudentServiceImpl implements StudentService
 	
 	public Students save(StudentsDto studentsDto) 
 	{
-		Students students = new Students(studentsDto.getFirstName(),studentsDto.getLastName(),studentsDto.getEmail(),studentsDto.getContact(), studentsDto.getRoleName(), studentsDto.getCourse(),studentsDto.getDate(),studentsDto.getDate().getDayOfWeek(),studentsDto.getTimeIn(),studentsDto.getTimeOut(), studentsDto.getSsn(), studentsDto.getAddress1(), studentsDto.getAddress2(), studentsDto.getLandmark(), studentsDto.getZipCode());
+		Students students = new Students(studentsDto.getFirstName(),studentsDto.getLastName(),studentsDto.getEmail(),studentsDto.getContact(), studentsDto.getRoleName(), studentsDto.getCourse(),studentsDto.getDate(),studentsDto.getDate().getDayOfWeek(),studentsDto.getTimeIn(),studentsDto.getTimeOut(), studentsDto.getSsn(), studentsDto.getAddress1(), studentsDto.getAddress2(), studentsDto.getLandmark(), studentsDto.getZipCode(), studentsDto.getCity(), studentsDto.getState());
 		return studentRepository.save(students);
 	}
 	
 	@Override
-	public void sendEmail(String email) 
+	public void sendEmail(String email,LocalDate date, String timeIn, String timeOut) 
 	{
 		try 
 		{
-			Students student = studentRepository.findByEmail(email);
+			Students student = studentRepository.getSlots(email,date,timeIn,timeOut);
 			String subject = "Slot Details";
 			String senderName = "Equisym Team";
 			String mailContent= "<p>Dear " + student.getFirstName() +" " +student.getLastName() +",</p>";
@@ -59,7 +59,7 @@ public class StudentServiceImpl implements StudentService
 			mailContent+="<p> "+"<b>Date & Day</b> : "+ student.getDate() + "(" + student.getDate().getDayOfWeek() +")"+ "</p>";
 			mailContent+="<p> "+"<b>Start Time</b> : "+ student.getTimeIn() + "</p>";
 			mailContent+="<p> "+"<b>End Time</b> : "+ student.getTimeOut()+ "</p>";
-			mailContent+="<p> "+"<b>Venue</b> : "+ student.getAddress1()+"<br>"+ student.getAddress2()+ "<br>"+ student.getLandmark()+ "</p>";
+			mailContent+="<p> "+"<b>Venue</b> : "+ student.getAddress1()+"<br>"+ student.getAddress2()+ "<br>"+ student.getLandmark()+"<br>"+ student.getCity()+"<br>"+ "</p>";
 			mailContent+="<p> "+"<b>ZIP Code</b> : "+ student.getZipCode() + "</p>";
 			
 			mailContent+= "<p> Thank you<br>Equisym Team</p>";

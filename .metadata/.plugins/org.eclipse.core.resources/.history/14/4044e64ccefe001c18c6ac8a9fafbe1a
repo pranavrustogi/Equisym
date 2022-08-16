@@ -1,0 +1,241 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+ /* background: #0fb098; */
+ background: #25383B;
+ background-size:cover;
+	background-repeat: no-repeat;
+	background-position:center center;
+	background-attachment: fixed;
+ 
+ }
+ 
+  .photo{
+ background:black;
+ }
+
+.form-container {
+    display: flex;
+    height: 98vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container .form-wrap {
+   max-width:500px;
+	border-radius:30px;
+	margin:auto;
+	background:rgba(0,0,0,0.8);
+	box-sizing: border-box;
+	padding:40px;
+	color:#fff;
+	margin-top:100px;
+	 
+	
+}
+
+/* .form-container .form-wrap {
+    background: #c0c0c0;
+    width: 40%;
+    padding: 15px 20px;
+    border-top-left-radius:20px;
+	border-bottom-left-radius:20px;
+	border-top-Right-radius:20px;
+	border-bottom-Right-radius:20px;
+} */
+
+.form-container .form-wrap h2 {
+    text-align: center;
+    margin: 0px 0px 20px;
+    font-size: 19px;
+}
+
+.form-container .form-wrap .form-box {
+    margin: 0px 0px 15px;
+}
+
+.form-container .form-wrap .form-box input[type="password"]{
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: 1px solid #353535;
+    width: 100%;
+}
+
+ .form-group {
+    display: flex;
+    justify-content: center;
+}
+
+
+input[type=submit]{
+	width:40%;
+	box-sizing:border-box;
+	padding:5px 0;
+	margin-top:30px;
+	outline:none;
+	border:none;
+	background:#0000ff;
+	opacity:0.7;
+	border-radius:20px;
+	font-size:20px;
+	color:#fff;
+	
+	
+}
+#message {
+	max-height:260px;
+  display:none;
+  background: #c0c0c0;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+  border-top-left-radius:20px;
+	border-bottom-left-radius:20px;
+	 border-top-Right-radius:20px;
+	border-bottom-Right-radius:20px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 15px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+}
+
+
+
+
+
+
+
+
+
+
+/*   * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+ background: #0fb098;
+ }
+
+.form-container {
+    display: flex;
+    height: 98vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container .form-wrap {
+    background: #c0c0c0;
+    width: 40%;
+    padding: 15px 20px;
+    border-top-left-radius:20px;
+	border-bottom-left-radius:20px;
+	border-top-Right-radius:20px;
+	border-bottom-Right-radius:20px;
+}
+
+.form-container .form-wrap h2 {
+    text-align: center;
+    margin: 0px 0px 20px;
+    font-size: 19px;
+}
+
+.form-container .form-wrap .form-box {
+    margin: 0px 0px 15px;
+}
+
+.form-container .form-wrap .form-box input[type="password"]{
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: 1px solid #353535;
+    width: 100%;
+}
+
+ .form-group {
+    display: flex;
+    justify-content: center;
+}
+
+
+input[type=submit]{
+	width:40%;
+	box-sizing:border-box;
+	padding:5px 0;
+	margin-top:30px;
+	outline:none;
+	border:none;
+	background:#0000ff;
+	opacity:0.7;
+	border-radius:20px;
+	font-size:20px;
+	color:#fff;
+	
+	
+}
+#message {
+	max-height:260px;
+  display:none;
+  background: #c0c0c0;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+  border-top-left-radius:20px;
+	border-bottom-left-radius:20px;
+	 border-top-Right-radius:20px;
+	border-bottom-Right-radius:20px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 15px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+/*  .valid {
+/*  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+/* .invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+}  */

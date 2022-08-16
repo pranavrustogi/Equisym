@@ -26,6 +26,8 @@ public class SlotCreationDto
 	private String address2;
 	private String landmark;
 	private String zipCode;
+	private String city;
+	private String state;
 	private String course;
 	private double latitude;
 	private double longitude;
@@ -55,7 +57,7 @@ public class SlotCreationDto
 		ssn = user.getSsn();
 	}
 
-	public SlotCreationDto(LocalDate date, DayOfWeek day, String timeIn, String timeOut,String address1, String address2, String landmark, String zipCode, String course, double latitude, double longitude, int capacity) {
+	public SlotCreationDto(LocalDate date, DayOfWeek day, String timeIn, String timeOut,String address1, String address2, String landmark, String zipCode, String city, String state, String course, double latitude, double longitude, int capacity) {
 		super();
 		this.date = date;
 		this.day = day;
@@ -65,6 +67,8 @@ public class SlotCreationDto
 		this.address2 = address2;
 		this.zipCode = zipCode;
 		this.landmark = landmark;
+		this.city= city;
+		this.state= state;
 		this.course = course;
 		this.latitude=latitude;
 		this.longitude=longitude;
@@ -171,6 +175,24 @@ public class SlotCreationDto
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+	
+	
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public String getCourse() {

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>  </title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/reset_style.css" />
+
+</head >	
+<body link="black" vlink="red" alink="blue">
+			 <body class="landing">
+
+		<!-- Header -->
+			<header id="header" class="alt">
+						<h5><a href="index">EQUISYM</a></h5>
+			
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a th:href="index">Home</a></li>
+					<li><a th:href="@{/}">About Us</a></li>
+					<li><a th:href="@{/}">Our Gallery</a></li>
+					<li><a href="partnersInfo">Santa's Knights</a></li>
+					<li><a href="conductUs">Contact Us</a></li>
+					<li><a href="https://www.santasknights.org/membership">Donate</a></li>
+					<li><a href="login">Login & Registration</a></li>
+					<!-- <li><a href="elements.html">EEEE Us</a></li> -->
+				</ul>
+			</nav>	 
+
+
+<div class="form-container">
+    <form th:action="@{/reset}" method="post" onSubmit = "return checkPassword(this)" class="form-wrap">
+   <input type="hidden" name="code" th:value="${code}" />
+   <div th:if="${param.Success}">
+					<div class= "alert alert-info">
+					<div style="color:green">
+						You've Successfully changed your password !!
+					</div>
+					</div>
+				
+				</div>
+				 <div align="center">
+           <img src="../img/yes2.jpg" class="photo">
+           
+           </div>
+        <h2>Reset Your Password</h2>
+        <div class="form-box">
+						<input type="password" class = "form-control"   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" name="password" required  placeholder="Enter Your New Password" />
+						
+						</div>
+						
+		<div class="form-box">
+						<input type="password" class = "form-control"  name="password2" required autofocus placeholder="Re-Enter Your New Password"/>
+						
+						</div>				
+						
+						
+        <div class="form-group">
+				<input type="submit" class="btn btn-success"><br>
+				
+		</div>
+		<div id="message" >
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A lowercase letter</p>
+  <p id="capital" class="invalid">A capital (uppercase) letter</p>
+  <p id="number" class="invalid">A number</p>
+  <p id="length" class="invalid">Minimum 8 characters</p>
+</div>
+    </form>
+    				
+    
+</div>
+<script>
+	function checkPassword(form) {
+        password1 = form.password.value;
+        password2 = form.password2.value;
+
+        // If password not entered
+        if (password1 == '')
+            alert ("Please enter Password");
+              
+        // If confirm password not entered
+        else if (password2 == '')
+            alert ("Please enter confirm password");
+              
+        // If Not same return False.    
+        else if (password1 != password2) {
+            alert ("\nPassword did not match: Please try again...")
+            return false;
+        }
+
+        // If same return True.
+        else{
+            //alert("Password Match")
+            return true;
+        }
+    }
+	</script>
+	<script>
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+}
+
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+
+ <!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/js/main.js"></script> 
+
+</body>
+</html>	
+
+
+
+
+
+
+
+
+
+
+
+<!--     <!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>  </title>
+    <link rel="stylesheet" type="text/css" href="css/reset_style.css" />
+
+</head >	
+<body link="black" vlink="red" alink="blue">
+				 <a href="/" th:href="@{/login}">Login </a>
+
+
+<div class="form-container">
+    <form th:action="@{/reset}" method="post" onSubmit = "return checkPassword(this)" class="form-wrap">
+   <input type="hidden" name="code" th:value="${code}" />
+   <div th:if="${param.Success}">
+					<div class= "alert alert-info">
+					<div style="color:green">
+						You've Successfully changed your password !!
+					</div>
+					</div>
+				
+				</div>
+        <h2>Reset Your Password</h2>
+        <div class="form-box">
+						<input type="password" class = "form-control" id="password" name="password" required autofocus placeholder="Enter Your New Password" />
+						
+						</div>
+						
+		<div class="form-box">
+						<input type="password" class = "form-control"  name="password2" required autofocus placeholder="Re-Enter Your New Password"/>
+						
+						</div>				
+						
+						
+        <div class="form-group">
+				<input type="submit" class="btn btn-success"><br>
+				
+		</div>
+		<div id="message" >
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A lowercase letter</p>
+  <p id="capital" class="invalid">A capital (uppercase) letter</p>
+  <p id="number" class="invalid">A number</p>
+  <p id="length" class="invalid">Minimum 8 characters</p>
+</div>
+    </form>
+    				
+    
+</div>
+<script>
+	function checkPassword(form) {
+        password1 = form.password.value;
+        password2 = form.password2.value;
+
+        // If password not entered
+        if (password1 == '')
+            alert ("Please enter Password");
+              
+        // If confirm password not entered
+        else if (password2 == '')
+            alert ("Please enter confirm password");
+              
+        // If Not same return False.    
+        else if (password1 != password2) {
+            alert ("\nPassword did not match: Please try again...")
+            return false;
+        }
+
+        // If same return True.
+        else{
+            //alert("Password Match")
+            return true;
+        }
+    }
+	</script>
+	<script>
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+}
+
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+</body>
+</html>	  -->
+
+
+
+

@@ -43,6 +43,13 @@ public class Slots
 	private String landmark;
 	@Column(name="ZipCode")
 	private String zipCode;
+	
+	@Column(name="City")
+	private String city;
+	@Column(name="State")
+	private String state;
+	
+	
 	@Column(name="CONTACT")
 	private String contact;
 	@Column(name="ROLE")
@@ -69,7 +76,7 @@ public class Slots
 	public Slots()
 	{}
 
-	public Slots(String firstName, String lastName, String email,String address1, String address2, String landmark,String zipCode ,String contact,String roleName ,String course, LocalDate date, 
+	public Slots(String firstName, String lastName, String email,String address1, String address2, String landmark,String zipCode, String city, String state, String contact,String roleName ,String course, LocalDate date, 
 			DayOfWeek day, String timeIn, String timeOut, double latitude, double longitude, int capacity) 
 	{
 		super();
@@ -80,6 +87,8 @@ public class Slots
 		this.address2 = address2;
 		this.landmark = landmark;
 		this.zipCode = zipCode;
+		this.city = city;
+		this.state = state;
 		this.contact = contact;
 		this.roleName=roleName;
 		this.course = course;
@@ -90,6 +99,7 @@ public class Slots
 		this.latitude=latitude;
 		this.longitude=longitude;
 		this.capacity = capacity;
+		
 	}
 
 	public Long getId() {
@@ -140,6 +150,24 @@ public class Slots
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+	
+	
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public String getContact() {

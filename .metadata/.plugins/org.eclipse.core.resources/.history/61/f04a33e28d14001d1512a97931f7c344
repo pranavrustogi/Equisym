@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<title>Admin Page</title>
+    <link rel="stylesheet" href="css/admin_page.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+
+</head>
+<body>
+  <section id="menu">
+  <div class="logo">
+    <img src="img/logo.png" alt="">
+  <h2>Equisym</h2>
+  
+  </div>
+  <div class="items">
+ <ul>
+					<li><a th:href="index">Home</a></li>
+					<li><a th:href="@{/}">About Us</a></li>
+					<li><a th:href="@{/}">Our Gallery</a></li>
+					<li><a href="partnersInfo">Santa's Knights</a></li>
+					<li><a href="conductUs">Contact Us</a></li>
+					<li><a href="https://www.santasknights.org/membership">Donate</a></li>
+                     <li sec:authorize="isAuthenticated()"><a onclick="myfunction()" th:href="@{/logout}">Logout</a></li>					
+				</ul>
+
+ </div>
+  
+  </section>
+  
+  <section id="interface">
+  <form th:action="@{/admin_page}" method="post" >
+  <div class="navigation">
+  
+  <div class="n1">
+  
+   <div>
+   
+   <i   id="menu-btn" class="fas fa-bars"></i>
+   </div>
+	<div class="title1">
+	<label>Select Role</label>
+	<br>
+	<select style="color:#777" id="role" name = "role"  class="field"   th:onchange="this.form.submit()">
+	<option value="" >Choose Role</option>
+	<option value= "Trainer"> Trainer </option>
+	<option value="Trainer & Trainee"> Trainer and Trainee </option>
+	
+	</select>
+	</div>
+ </div>
+  <div class="profile">   
+  <form>
+  <div class="checkstatus">
+	<a th:href="@{/admin_page2}">
+	<input class="checkbutton" type="button" onclick="myfunction()" value="Check Status">
+	</a>
+	</div>
+</form>
+<img   src="img/myphoto.jpg" alt="">
+
+   </div>  
+ 
+  
+  </div>
+  <h3 class="i-name">
+        Dashboard
+  </h3>
+  
+  <div  class="board"> 
+  <table id="table" style="width:100%">
+     <thead>
+          <tr id="table1" class="table1">
+          <th scope = "row">Id</th>
+			<th scope = "row">First Name</th>
+			<th scope = "row">Last Name</th>
+			<th scope = "row">Contact Number</th>
+			<th scope = "row">Email Id</th>
+			<th scope = "row">Actions</th>
+          
+          
+          </tr>
+     </thead>
+  <tbody>
+      <tr class="table2" id="table2" th:each="list : ${pending_list}">
+			<td th:text="${list.id}"></td>
+			<td th:text="${list.firstName}"></td>
+			<td th:text="${list.lastName}"></td>
+			<td th:text="${list.contact}"></td>
+			<td th:text="${list.email}"></td>
+			<td>
+			<a th:href = "@{'/admin_page/approve/' + ${list.id}}" class="button" role="button" onclick="myFunction1();" > Approve</a>
+			&nbsp;&nbsp;&nbsp;
+			<a th:href = "@{'/admin_page/deny/' + ${list.id}}" class="button1" role="button">Deny</a>
+			</td>
+			</tr>
+  
+  </tbody>
+  
+  </table>
+  
+  <script>
+  function myFunction1(){
+	  alert('Approve');
+  }
+  
+  
+  
+  </script>
+  
+  
+  </div>
+</form>  
+  </section>
+
+
+<script type="text/javascript">
+    var elems = document.getElementsByClassName('confirmation');
+    var confirmIt = function (e) {
+        if (!confirm('Are you sure?')) e.preventDefault();
+    };
+    for (var i = 0, l = elems.length; i < l; i++) {
+        elems[i].addEventListener('click', confirmIt, false);
+    }
+</script>
+
+	<script>
+	
+	$('#menu-btn').click(function(){
+		
+		$('#menu').toggleClass("active");
+		
+	})
+	
+	
+	</script>	
+	
+	<script>
+				
+				$(document).ready(function () {
+					  $("#role").val(window.sessionStorage.getItem("role"));
+					});
+				
+		       $("#role").on('change', function () {
+	  		  window.sessionStorage.setItem("role", this.value);
+	  		});
+		        
+		</script>
+		
+		
+
+<script>
+				function myfunction()
+				{
+					sessionStorage.clear();
+				}
+</script>		
+	
+	
+</body>
+</html>

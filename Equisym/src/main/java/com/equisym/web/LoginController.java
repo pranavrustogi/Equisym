@@ -45,13 +45,13 @@ public class LoginController
 	}
 	
 	@GetMapping("/conductUs")  
-	public String contactus() 
+	public String contactUs() 
 	{
 		return "conductUs";
 	}
 
 	@GetMapping("/partnersInfo")
-	public String partnersinfo() 
+	public String partnersInfo() 
 	{
 		return "partnersInfo";
 	}
@@ -62,26 +62,50 @@ public class LoginController
 		return "index";
 	} 
 	
+	// This function prevents user who didn't verified their email id or they are not administrator verified.
+	// User with Role "Trainer" will reach to slot index page where they can create/update and delete slots.
+	// User with Role "Trainee" will reach to slot home page where they can book the available slots according to available sports slots, date &time.
+	// User with Role "Trainer & Trainee"  will reach to slot main page where if they have choice to go to trainer page or trainee page. 
+	
 	@GetMapping("/")
-	public String loginpage(HttpServletRequest request, Authentication authentication)
+	public String loginPage(HttpServletRequest request, Authentication authentication)
 	{
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		Users userInfo = userService.checkEmail(username);
-		if(userInfo.isEnabled()==true)
+		if(userInfo.isEnabled()==true )
 		{
 			
-			if(userInfo.getRoleName().equalsIgnoreCase("Trainer"))
-			 
+			if(userInfo.isAdminVerified()==true)
 			{
-				SlotCreationDto.userDetails(userInfo);
-				//return "redirect:/slot";
-				return "redirect:/slot_index";
+				if(userInfo.getRoleName().equalsIgnoreCase("Trainer"))
+					 
+				{
+					SlotCreationDto.userDetails(userInfo);
+					//return "redirect:/slot";
+					return "redirect:/slot_index";
+				}
+				else if(userInfo.getRoleName().equalsIgnoreCase("Trainee"))
+				{
+					StudentsDto.userDetails(userInfo);
+					return "redirect:/slot_home";
+				}
+				else if(userInfo.getRoleName().equalsIgnoreCase("Admin"))
+				{
+					return "redirect:/admin_page";
+				}
+				
+				else
+				{
+					SlotCreationDto.userDetails(userInfo);
+					StudentsDto.userDetails(userInfo);
+					return "redirect:/slot_main";
+				}
 			}
 			else
 			{
-				StudentsDto.userDetails(userInfo);
-				return "redirect:/slot_home";
+				return "redirect:/login?Fail2";
 			}
+			
 
 		}
 		else

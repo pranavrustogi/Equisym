@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		 <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Login </title>
+    <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/menu.css">
+    
+    
+   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+   	<!-- Header -->
+			<header id="header" class="alt">
+			
+			<h5><a href="index">EQUISYM</a></h5>
+			
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav   clientId:886984842616-n761486ndug29u1afjjpcmaemaghtjpu.apps.googleusercontent.com 
+client-secret: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 -->
+			<nav id="nav">
+				<ul class="links">
+				     
+					<li><a th:href="index">Home</a></li>
+					<li><a th:href="@{/}">About Us</a></li>
+					<li><a th:href="@{/}">Our Gallery</a></li>
+					<li><a href="partnersInfo">Santa's Knights</a></li>
+					<li><a href="conductUs">Contact Us</a></li>
+					<li><a href="https://www.santasknights.org/membership">Donate</a></li>
+					<li><a href="login">Login & Registration</a></li>
+					<!-- <li><a href="elements.html">EEEE Us</a></li> -->
+				</ul>
+			</nav>
+
+   
+    <div class="bg-img">
+    
+   
+      <div class="content">
+      
+      
+        <h1>Login Here</h1>
+        <br>
+		              <form  th:action="@{/index}" method="post" >
+		              <div th:if = "${param.error}">
+						<div class="alert alert-danger" style="color:red"> 
+						<h3>	Invalid Username or Password </h3>
+						</div>
+					</div>
+					<div th:if = "${param.logout}">
+						<div class="alert alert-info" style="color:red">
+						<h3>	You have been Logged out.</h3>
+						</div>
+					
+					</div>
+					<div th:if = "${param.Fail}" >
+						<div class="alert alert-danger"style="color:red">
+						<h3>	Please Verify Email!!, Then try to login </h3>
+						</div>
+					
+					</div>
+          <div class="field">
+            <span class="fa fa-user"></span>
+                <input  type="email" placeholder="Enter your email" id="username"  name="username" th:value="*{username}" 
+						 autofocus="autofocus"> 
+						           </div>
+          <div class="field space">
+            <span class="fa fa-lock"></span>
+               <input type="password" placeholder="Password"  id="password" name="password" autofocus="autofocus">             <span class="show">SHOW</span>
+          </div>
+          <div class="pass">
+            <a href="forgot">Forgot Password?</a>
+          </div>
+          <div class="field">
+                  <input type="submit"  name="login-submit" id="login-submit" value="Log In"/>          </div>
+        </form>
+        <div class="login">Or login with</div>
+        <div class="link">
+          
+          <div class="instagram">
+            <a class="fab fa-google" th:href="@{/oauth2/authorization/google}"><span>&nbsp;&nbsp;Google</span></a>
+          </div>
+          <div>&nbsp;</div>
+        </div>
+        <div class="signup">Don't have account?
+          <a href="registration">Register Here</a>
+        </div>
+        <br>
+        <br>
+        <ul class="copyright" style="color:white">
+						<li>&copy; 2015-2021 by Santa's Knights, Inc</li>
+					</ul>
+      </div>
+    </div>
+
+   
+    
+    <!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/js/main.js"></script>
+  </body>
+</html>

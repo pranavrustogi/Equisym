@@ -2,6 +2,7 @@ package com.equisym.service;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.crypto.Cipher;
 import javax.mail.MessagingException;
 
 //import org.springframework.data.jpa.repository.Modifying;
@@ -25,4 +26,20 @@ public interface UserService extends UserDetailsService
 	Users checkEmail(String email);
 	Users checkContact(String contact);
 	boolean checkVerified(String username);
+	void adminAprrove(Long id);
+	void adminDeny(Long id);
+	void sendApproveMail(Users user);
+	void sendDeleteMail(Users user);
+	void sendChangeMail(Users user);
+
+	void setAdminVerifiedTrue(String email);
+	//String convertMessage(String parameter) throws Exception;
+	//String convertMessageAgain(String parameter) throws Exception;
+	String getKey() throws Exception;
+	String encryptKey(String key) throws Exception;
+	String decryptKey(String key) throws Exception;
+	String encrypt(String message) throws Exception;
+	String decrypt(String encryptedText) throws Exception;
+	void setKey(String string);
+	
 }

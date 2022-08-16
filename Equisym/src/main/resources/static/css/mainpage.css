@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-header
+ header
 {
   position: absolute;
   top: 0;
@@ -17,7 +17,7 @@ header
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+}  
 
 header h2{
 	
@@ -29,7 +29,7 @@ header .logo
   text-transform: uppercase;
   cursor: pointer;
 }
-.toggle
+/* .toggle
 {
   position: relative;
   width: 60px;
@@ -47,36 +47,33 @@ header .logo
   background-size: 25px;
   background-position: center;
   cursor: pointer;
-}
-.showcase
+} */
+ .showcase
 {
+	top:0;
+	right:50%;
   position: absolute;
   right: 0;
   width: 100%;
-  min-height: 100vh;
+  min-height:100vh;
   padding: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #111;
+ background: url(../img/karate.jpg);
   transition: 0.5s;
   z-index: 2;
-}
+  	    background-repeat:no-repeat;
+  background-size:cover;
+	background-position: center center;
+	background-attachment:fixed;
+} 
 .showcase.active
 {
   right: 300px;
 }
 
-.showcase video
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.8;
-}
+
 .overlay
 {
   position: absolute;
@@ -106,7 +103,7 @@ header .logo
 {
   font-size: 4em;
   font-weight: 700;
-  color: #fff;
+  color: #000000;
   line-height: 1em;
   text-transform: uppercase;
 }
@@ -165,7 +162,7 @@ header .logo
   transition: 0.2s; */
     background: rgb(255,0,0,1);
   
-  width:15%;
+  width:25%;
 	box-sizing:border-box;
 	padding:5px 0;
 	margin-top:30px;
@@ -191,7 +188,7 @@ header .logo
   transition: 0.2s; */
   background: rgb(0,255,0);
   
-  width:15%;
+  width:25%;
 	box-sizing:border-box;
 	padding:5px 0;
 	margin-top:30px;
@@ -206,11 +203,11 @@ header .logo
 
 .text button
 {
-	
+  
   display: inline;
   font-size: 1em;
   background: #fff;
-  padding: 10px 30px;
+  padding: 10px 50px;
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 500;
@@ -248,7 +245,7 @@ header .logo
 {
   transform: scale(0.5) translateY(-15px);
 }
-.menu
+/* .menu
 {
   position: absolute;
   top: 0;
@@ -258,14 +255,14 @@ header .logo
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .container botton{
 	display:flex;
 }
 
 
-.menu ul
+/* .menu ul
 {
   position: relative;
 }
@@ -282,7 +279,7 @@ header .logo
 .menu ul li a:hover
 {
   color: #03a9f4; 
-}
+} */
 
 @media (max-width: 991px)
 {
